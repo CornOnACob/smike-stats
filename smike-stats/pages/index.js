@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
 import React, { useState } from 'react';
-import Match from './Match';
+import Match from '../Match';
 
 export default function Home() {
 
