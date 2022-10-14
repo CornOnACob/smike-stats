@@ -10,7 +10,7 @@ export default function Home() {
   const searchSummoner = event => {
     event.preventDefault();
     const summonerName = event.target.summoner.value;
-    fetch(`http://localhost:3000/api/summoner/${summonerName}`)
+    fetch(`https://smike-stats.vercel.app/api/summoner/${summonerName}`)
     .then((res) => res.json())
     .then(function (data) {
       setMatches(data.matches);
