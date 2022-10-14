@@ -34,7 +34,7 @@ export default function Home() {
           <input type="text" id="summoner" name="summoner" className={styles.summonerNameItem}></input>
           <button type="submit" className={styles.summonerNameItem}>Submit</button>
         </form>
-        {matches && <div>{matches.map((el) => <Match match={el} className={styles.match}/>)}</div>}
+        {matches && <div>{matches.map((el) => <Match match={el} key={el.info.gameId} className={styles.match}/>)}</div>}
       </main>
     </div>
   )
