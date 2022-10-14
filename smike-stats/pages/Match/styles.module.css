@@ -1,0 +1,13 @@
+.playerLost {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5vh;
+}
+
+.playerWon {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5vh;
+}

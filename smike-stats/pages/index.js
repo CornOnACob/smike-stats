@@ -1,19 +1,20 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
 import React, { useState } from 'react';
+import Match from './Match';
 
 export default function Home() {
 
-  const [summoner, setSummoner] = useState({});
+  const [matches, setMatches] = useState([]);
 
   const searchSummoner = event => {
     event.preventDefault();
-    console.log("Fetching summoner");
-    fetch('http://localhost:3000/api/summoner/Doublelift')
+    const summonerName = event.target.summoner.value;
+    fetch(`http://localhost:3000/api/summoner/${summonerName}`)
     .then((res) => res.json())
-    .then(function (summonerData) {
-      console.log(summonerData);
-      setSummoner(summonerData);
+    .then(function (data) {
+      setMatches(data.matches);
+      console.log(data.matches);
     })
     .catch(console.error);
   }
@@ -21,7 +22,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Smike Stats</title>
+        <title>League Stats</title>
         <meta name="description" content="A simple app to get stats for your recent League games!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -33,7 +34,7 @@ export default function Home() {
           <input type="text" id="summoner" name="summoner" className={styles.summonerNameItem}></input>
           <button type="submit" className={styles.summonerNameItem}>Submit</button>
         </form>
-        {summoner && <div>{summoner.name}</div>}
+        {matches && <div>{matches.map((el) => <Match match={el} className={styles.match}/>)}</div>}
       </main>
     </div>
   )

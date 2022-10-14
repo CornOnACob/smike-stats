@@ -21,7 +21,6 @@
   margin: .2vh;
 }
 
-.matchResult {
-  margin: .2vh;
-  display: flex;
+.match {
+  margin: 2vh;
 }
